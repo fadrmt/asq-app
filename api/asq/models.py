@@ -19,5 +19,9 @@ class Answer(models.Model):
     posted_by = models.CharField(max_length=100, verbose_name='User Name')
     posted_on = models.DateTimeField(auto_now_add=True)
 
+    # Relationships
+    question = models.ForeignKey(Question, related_name='question_answers',
+                    verbose_name='Question', on_delete=models.CASCADE)
+
     def __str__(self):
         return self.id
