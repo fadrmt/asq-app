@@ -7,13 +7,12 @@ RUN apt-get update \
         postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app/api
+WORKDIR /api
 
-
-COPY requirements.txt /app/api
+COPY requirements.txt /api
 RUN pip install -r requirements.txt
 
-ADD ./ /app/api
+ADD ./ /api
 
 EXPOSE 8000
 

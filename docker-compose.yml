@@ -11,19 +11,15 @@ services:
   django:
     build: ./api
     volumes:
-      - ./api:/app/api
+      - ./api:/api
     ports:
       - "8000:8000"
     depends_on:
       - db
   frontend:
+    image: node
     build: ./frontend
-    command: ["npm", "start"]
     volumes:
-      - ./frontend:/app/frontend
-      - node-modules:/app/frontend/node_modules
+      - ./frontend:/frontend
     ports:
       - "3000:3000"
-
-volumes:
-  node-modules:

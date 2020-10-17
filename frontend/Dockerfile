@@ -1,9 +1,10 @@
-FROM node:14.13.0-alpine
+FROM node:14-alpine
 
-WORKDIR /app/frontend
-COPY package.json /app/frontend
+RUN apk add --no-cache bash
 
-RUN npm install
+RUN mkdir -p /frontend
+WORKDIR /frontend
 
-EXPOSE 3000
-CMD ["npm", "start"]
+RUN rm -rf node_modules
+
+CMD ./start.sh
