@@ -11,3 +11,8 @@
     max-width: 80%;
     min-width: 50%;
 }
+
+.question-search-box {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
