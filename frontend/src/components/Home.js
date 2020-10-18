@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import QuestionList from './QuestionList';
+import { withRouter } from 'react-router-dom';
 
 class Home extends Component {
     state = {
@@ -30,4 +31,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default withRouter(Home);

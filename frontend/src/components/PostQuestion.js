@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Input } from 'antd';
+import { Form, Input, Button } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
+import Title from 'antd/lib/typography/Title';
 import { withRouter } from 'react-router-dom';
+
 
 class PostQuestion extends Component {
     state = {
@@ -31,9 +34,11 @@ class PostQuestion extends Component {
         const { author_name, title, body } = this.state
         return (
             <div className="question-form-container">
+                <Title>Post a Question</Title>
                 <Form onSubmit={this.handleSubmit} className="question-form">
                     <Form.Item>
                         <Input
+                            label="Your Name"
                             name="author_name"
                             placeholder="Your Name"
                             value={author_name}
@@ -43,8 +48,9 @@ class PostQuestion extends Component {
                     </Form.Item>
                     <Form.Item>
                         <Input
+                            label="Question Title"
                             name="title"
-                            placeholder="Question Title"
+                            placeholder="What is your question?"
                             value={title}
                             onChange={this.handleChange}
                             required
@@ -52,8 +58,9 @@ class PostQuestion extends Component {
                     </Form.Item>
                     <Form.Item>
                         <TextArea
+                            label="Question Body"
                             name="body"
-                            placeholder="Question Body"
+                            placeholder="Explain your question in further detail."
                             value={body}
                             onChange={this.handleChange}
                             required
@@ -64,6 +71,7 @@ class PostQuestion extends Component {
                         ) : (
                         <Button htmlType="submit" className="btn-submit" disabled>Submit</Button>
                     )}
+                    &nbsp;<Button>Cancel</Button>
                 </Form>
             </div>
         )
