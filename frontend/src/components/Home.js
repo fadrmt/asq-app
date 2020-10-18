@@ -17,26 +17,27 @@ class Home extends Component {
         this.getQuestionList()
     }
 
-    getQuestionList = (search = null) => {
+    getQuestionList = (search = false) => {
         let url = 'http://localhost:8000/api/questions/';
         if(search) {
             url = 'http://localhost:8000/api/questions?search=' + this.state.search;
         }
-        console.log(url);
         axios.get(url)
         .then(res => {
-            console.log(res.data)
             this.setState({
             questions: res.data
             })
         })
     }
 
-    handleSearch = (value) => {
+    handleChange = (e) => {
         this.setState({
-            search: value,
+          [e.target.name]: e.target.value
         })
-        this.getQuestionList(value);
+    }
+
+    handleSearch = (value, event) => {
+        this.getQuestionList(true);
     }
     
     render() {
@@ -48,9 +49,10 @@ class Home extends Component {
                         <Search
                             name="search"
                             placeholder="Search Question"
-                            onSearch={value => {
-                                this.handleSearch(value)
+                            onSearch={(value, event) => {
+                                this.handleSearch(value, event)
                             }}
+                            onChange={this.handleChange}
                             size="large"
                             className="question-search-box"
                         />
