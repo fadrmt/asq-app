@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Comment, Tooltip } from 'antd';
+import { Comment, Tooltip, Card } from 'antd';
 import moment from 'moment';
 import '../css/QuestionListItem.css';
 
 class Answer extends Component {
     render() {
         const { body, author_name, date_posted } = this.props.answer
-        return (  
-            <Comment
+        return (
+            <Card>
+                <Comment
                 author={ author_name }
                 content={ 
                     <p> { body } </p>
@@ -17,8 +18,10 @@ class Answer extends Component {
                     <span>{moment(date_posted).fromNow() }</span>
                     </Tooltip>
                 }
-            >
-            </Comment>
+                >
+                </Comment>
+            </Card>  
+            
         );
     }
 }

@@ -5,11 +5,12 @@ import { Card, Button } from 'antd';
 import '../css/QuestionList.css';
 import Question from './Question';
 import AnswerList from './AnswerList';
+import PostAnswer from './PostAnswer';
 
 class QuestionDetailPage extends Component {
     state = {
         question: null,
-        answers: null
+        answers: null,
     }
 
     componentDidMount() {
@@ -21,7 +22,6 @@ class QuestionDetailPage extends Component {
     getQuestion = (questionId) => {
         axios.get('http://localhost:8000/api/questions/' + questionId)
           .then(res => {
-            console.log(res.data)
             this.setState({
               question: res.data
             })
@@ -34,7 +34,6 @@ class QuestionDetailPage extends Component {
     getAnswers = (questionId) => {
         axios.get('http://localhost:8000/api/answers/?question=' + questionId)
           .then(res => {
-            console.log(res.data)
             this.setState({
               answers: res.data
             })
@@ -43,8 +42,14 @@ class QuestionDetailPage extends Component {
             console.log(error);
         })
     }
+
+    handleNewAnswer = () => {
+        const { questionId } = this.props.match.params;
+        this.getAnswers(questionId);
+    }
     
     render() {
+        const { questionId } = this.props.match.params;
         return (
             <>
                 <Link to='/'>
@@ -55,17 +60,23 @@ class QuestionDetailPage extends Component {
                     <Card className="question-card">
                         <Question question={this.state.question}/>
                     </Card>
-                    {this.state.question.answer_count === 1 
-                        ? <h1>{this.state.question.answer_count} Answer</h1>
-                        : <h1>{this.state.question.answer_count} Answers</h1>
-                    }
                 </>
                 : null 
                 }
+
+                <PostAnswer questionId={questionId} handleNewAnswer={this.handleNewAnswer} />
+                
                 { this.state.answers ?
-                    <AnswerList answers={this.state.answers} />
+                    <>
+                        {this.state.answers.length === 1 
+                            ? <h1>{this.state.answers.length} Answer</h1>
+                            : <h1>{this.state.answers.length} Answers</h1>
+                        }
+                        <AnswerList answers={this.state.answers} />
+                    </>
                 : null
                 }
+
             </>
         )
     }
