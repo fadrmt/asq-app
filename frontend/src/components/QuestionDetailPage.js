@@ -4,24 +4,39 @@ import { withRouter, Link } from 'react-router-dom';
 import { Card, Button } from 'antd';
 import '../css/QuestionList.css';
 import Question from './Question';
+import AnswerList from './AnswerList';
 
 class QuestionDetailPage extends Component {
     state = {
-        question: null
+        question: null,
+        answers: null
     }
 
     componentDidMount() {
         const { questionId } = this.props.match.params;
         this.getQuestion(questionId);
+        this.getAnswers(questionId);
     }
 
     getQuestion = (questionId) => {
-        console.log("here");
         axios.get('http://localhost:8000/api/questions/' + questionId)
           .then(res => {
             console.log(res.data)
             this.setState({
               question: res.data
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
+    getAnswers = (questionId) => {
+        axios.get('http://localhost:8000/api/answers/?question=' + questionId)
+          .then(res => {
+            console.log(res.data)
+            this.setState({
+              answers: res.data
             })
         })
         .catch(error => {
@@ -45,7 +60,12 @@ class QuestionDetailPage extends Component {
                         : <h1>{this.state.question.answer_count} Answers</h1>
                     }
                 </>
-                : null }
+                : null 
+                }
+                { this.state.answers ?
+                    <AnswerList answers={this.state.answers} />
+                : null
+                }
             </>
         )
     }
