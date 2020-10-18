@@ -13,15 +13,6 @@ class PostQuestion extends Component {
         'body' : '',
     }
 
-    // For clearing / resetting the state
-    clearState = () => {
-        this.setState({
-            'author_name': '',
-            'title': '',
-            'body' : '',
-        })
-    }
-
     // Update the state with each input change
     handleChange = (e) => {
         this.setState({
@@ -46,10 +37,7 @@ class PostQuestion extends Component {
         })
         .catch(error => {
             console.log(error);
-        })
-        .finally(() => {
-            this.clearState()
-        })    
+        })   
     }
 
     // handles the click of the Submit button
