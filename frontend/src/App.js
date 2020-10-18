@@ -2,6 +2,7 @@ import React from 'react';
 import './css/App.css';
 import { Layout } from 'antd';
 import { BrowserRouter } from "react-router-dom";
+import Home from './components/Home';
 
 const { Header, Content } = Layout;
 
@@ -12,9 +13,9 @@ function App() {
         <Header>
           <div className="logo-text">Asq.</div>
         </Header>
-        <Content style={{ padding: '0 50px', marginTop: 64, textAlign: 'center' }}>
+        <Content className="content">
           <BrowserRouter>
-            <p>Content here</p>
+            < Home />
           </BrowserRouter>
         </Content>
       </Layout>

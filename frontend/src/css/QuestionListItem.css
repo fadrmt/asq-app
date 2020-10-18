@@ -1,0 +1,21 @@
+.question-title {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.question-card-divider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.question-author-name {
+    font-weight: bold;
+}
+.answer-count {
+    margin: 0;
+}
+.question-meta {
+    padding-bottom: 0;
+}
+.ant-card-body {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
