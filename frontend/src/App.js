@@ -5,24 +5,25 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Home from './components/Home';
 import TopBar from './components/TopBar';
 import PostQuestion from './components/PostQuestion';
+import QuestionDetailPage from './components/QuestionDetailPage';
 
 const { Header, Content } = Layout;
 
 function App() {
   return (
     <div className="App">
-      <Layout className="layout">
-        <Header>
-          <TopBar logoText="Asq." />
-        </Header>
-        <Content className="content">
-          <BrowserRouter>
+      <BrowserRouter>
+        <Layout className="layout">
+          <Header>
+            <TopBar />
+          </Header>
+          <Content className="content">            
             <Route exact path="/" component={Home} />
             <Route path="/post-question" component={PostQuestion} />
-          </BrowserRouter>
-        </Content>
-      </Layout>
-      
+            <Route path="/question/:questionId" component={QuestionDetailPage} />               
+          </Content>
+        </Layout>
+      </BrowserRouter>      
     </div>
   );
 }

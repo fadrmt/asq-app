@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import QuestionList from './QuestionList';
+import Title from 'antd/lib/typography/Title';
 import { withRouter } from 'react-router-dom';
 
 class Home extends Component {
@@ -25,6 +26,7 @@ class Home extends Component {
     render() {
         return (
             <>
+            <Title>Questions</Title>
             <QuestionList questions={this.state.questions} />
             </>
         )

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
+import { Link } from 'react-router-dom';
 import '../css/QuestionList.css';
 import QuestionListItem from './QuestionListItem';
 
@@ -7,10 +8,13 @@ const QuestionList = (props) => {
   const { questions } = props
   const questionList = questions.length ? (
         questions.map(question => {
+            const url = '/question/' + question.id
             return (
-                <Card hoverable key={questions.id} className="question-card">
-                    <QuestionListItem question={question}/>
-                </Card>
+                <Link to={url}>
+                    <Card hoverable key={question.id} className="question-card">
+                        <QuestionListItem question={question}/>
+                    </Card>
+                </Link>
             )
         })
   ) : (

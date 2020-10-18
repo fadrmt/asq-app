@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Form, Input, Button } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import Title from 'antd/lib/typography/Title';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 
 class PostQuestion extends Component {
@@ -18,7 +19,7 @@ class PostQuestion extends Component {
             'title': '',
             'body' : '',
         })
-      }
+    }
 
     handleChange = (e) => {
         this.setState({
@@ -26,8 +27,28 @@ class PostQuestion extends Component {
         })
     }
 
+    postQuestion = () => {
+        const data = {
+            'author_name': this.state.author_name,
+            'title': this.state.title,
+            'body': this.state.body,
+        }
+
+        axios.post('http://localhost:8000/api/questions/', data)
+        .then(res => {
+            this.props.history.push('/')
+        })
+        .catch(error => {
+            alert(error.response.data.author_name)
+        })
+        .finally(() => {
+            this.clearState()
+        })    
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
+        this.postQuestion();
     }
 
     render() {
@@ -35,7 +56,7 @@ class PostQuestion extends Component {
         return (
             <div className="question-form-container">
                 <Title>Post a Question</Title>
-                <Form onSubmit={this.handleSubmit} className="question-form">
+                <Form className="question-form">
                     <Form.Item>
                         <Input
                             label="Your Name"
@@ -67,11 +88,11 @@ class PostQuestion extends Component {
                         />
                     </Form.Item>
                     { author_name && title && body ? (
-                        <Button htmlType="submit" className="btn-submit">Submit</Button>
+                        <Button onClick={this.handleSubmit} className="btn-submit">Submit</Button>
                         ) : (
-                        <Button htmlType="submit" className="btn-submit" disabled>Submit</Button>
+                        <Button onClick={this.handleSubmit} className="btn-submit" disabled>Submit</Button>
                     )}
-                    &nbsp;<Button>Cancel</Button>
+                    &nbsp;<Link to='/'><Button>Cancel</Button></Link>
                 </Form>
             </div>
         )
