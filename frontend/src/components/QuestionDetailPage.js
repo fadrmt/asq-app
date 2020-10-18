@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter, Link } from 'react-router-dom';
-import { Card, Button } from 'antd';
+import { Card, Button, Divider } from 'antd';
 import '../css/QuestionList.css';
 import Question from './Question';
 import AnswerList from './AnswerList';
 import PostAnswer from './PostAnswer';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
 class QuestionDetailPage extends Component {
     state = {
@@ -53,7 +54,7 @@ class QuestionDetailPage extends Component {
         return (
             <>
                 <Link to='/'>
-                    <Button>Back to Questions List</Button>
+                    <Button shape="round" icon={<ArrowLeftOutlined />}>Back to Questions List</Button>
                 </Link>
                 { this.state.question ?
                 <>
@@ -64,10 +65,12 @@ class QuestionDetailPage extends Component {
                 : null 
                 }
 
+                <Divider />
                 <PostAnswer questionId={questionId} handleNewAnswer={this.handleNewAnswer} />
                 
                 { this.state.answers ?
                     <>
+                        <Divider />
                         {this.state.answers.length === 1 
                             ? <h1>{this.state.answers.length} Answer</h1>
                             : <h1>{this.state.answers.length} Answers</h1>
