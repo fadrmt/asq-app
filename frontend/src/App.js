@@ -4,8 +4,8 @@ import { Layout } from 'antd';
 import { BrowserRouter, Route } from "react-router-dom";
 import Home from './components/Home';
 import TopBar from './components/TopBar';
-import PostQuestion from './components/PostQuestion';
-import QuestionDetailPage from './components/QuestionDetailPage';
+import PostQuestion from './components/Question/PostQuestion';
+import QuestionDetailPage from './components/Question/QuestionDetailPage';
 
 const { Header, Content } = Layout;
 

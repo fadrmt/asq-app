@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter, Link } from 'react-router-dom';
 import { Card, Button, Divider } from 'antd';
-import '../css/QuestionList.css';
+import '../../css/Question/QuestionDetail.css';
 import Question from './Question';
-import AnswerList from './AnswerList';
-import PostAnswer from './PostAnswer';
+import AnswerList from '../Answer/AnswerList';
+import PostAnswer from '../Answer/PostAnswer';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 
 class QuestionDetailPage extends Component {
@@ -54,11 +54,13 @@ class QuestionDetailPage extends Component {
         return (
             <>
                 <Link to='/'>
-                    <Button shape="round" icon={<ArrowLeftOutlined />}>Back to Questions List</Button>
+                    <Button shape="round" icon={<ArrowLeftOutlined />}>
+                        Back to Questions List
+                    </Button>
                 </Link>
                 { this.state.question ?
                 <>
-                    <Card className="question-card">
+                    <Card className="question-detail-card">
                         <Question question={this.state.question}/>
                     </Card>
                 </>

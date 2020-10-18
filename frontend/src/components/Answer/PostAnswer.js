@@ -77,9 +77,9 @@ class PostAnswer extends Component {
                         />
                     </Form.Item>
                     { author_name && body ? (
-                        <Button onClick={this.handleSubmit} className="btn-submit">Submit</Button>
+                        <Button shape="round" onClick={this.handleSubmit} className="btn-submit">Submit</Button>
                         ) : (
-                        <Button onClick={this.handleSubmit} className="btn-submit" disabled>Submit</Button>
+                        <Button shape="round" onClick={this.handleSubmit} className="btn-submit" disabled>Submit</Button>
                     )}
                 </Form>
             </div>

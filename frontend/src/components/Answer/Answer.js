@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Comment, Tooltip, Card } from 'antd';
 import moment from 'moment';
-import '../css/Answer.css';
+import '../../css/Answer/Answer.css';
 
 class Answer extends Component {
     render() {

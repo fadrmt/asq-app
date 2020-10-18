@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import QuestionList from './QuestionList';
+import QuestionList from './Question/QuestionList';
 import Title from 'antd/lib/typography/Title';
 import { withRouter } from 'react-router-dom';
 

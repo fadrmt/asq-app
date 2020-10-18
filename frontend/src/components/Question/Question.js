@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Divider } from 'antd';
 import moment from 'moment';
-import '../css/QuestionListItem.css';
+import '../../css/Question/QuestionListItem.css';
 
 class Question extends Component {
     render() {

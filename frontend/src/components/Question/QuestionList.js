@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'antd';
 import { Link } from 'react-router-dom';
-import '../css/QuestionList.css';
+import '../../css/Question/QuestionList.css';
 import QuestionListItem from './QuestionListItem';
 
 const QuestionList = (props) => {

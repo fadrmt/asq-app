@@ -88,11 +88,11 @@ class PostQuestion extends Component {
                         />
                     </Form.Item>
                     { author_name && title && body ? (
-                        <Button onClick={this.handleSubmit} className="btn-submit">Submit</Button>
+                        <Button shape="round" onClick={this.handleSubmit} className="btn-submit">Submit</Button>
                         ) : (
-                        <Button onClick={this.handleSubmit} className="btn-submit" disabled>Submit</Button>
+                        <Button shape="round" onClick={this.handleSubmit} className="btn-submit" disabled>Submit</Button>
                     )}
-                    &nbsp;<Link to='/'><Button>Cancel</Button></Link>
+                    &nbsp;<Link to='/'><Button shape="round">Cancel</Button></Link>
                 </Form>
             </div>
         )
