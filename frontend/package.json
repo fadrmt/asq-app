@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^4.7.0",
     "axios": "^0.20.0",
+    "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
