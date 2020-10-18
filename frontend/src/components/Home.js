@@ -13,10 +13,14 @@ class Home extends Component {
         search: null
     }
 
+    // Load questions on mount
     componentDidMount() {
         this.getQuestionList()
     }
 
+    // Retrieves the list of questions
+    // handles the case of no filter (get all) and filter by title
+    // in the case of an error, logs it to console
     getQuestionList = (search = false) => {
         let url = 'http://localhost:8000/api/questions/';
         if(search) {
@@ -28,14 +32,20 @@ class Home extends Component {
             questions: res.data
             })
         })
+        .catch(error => {
+            console.log(error);
+        })
     }
 
+    // updates state when search box input is changed
     handleChange = (e) => {
         this.setState({
           [e.target.name]: e.target.value
         })
     }
 
+    // handles search event
+    // re-retrieve list of questions based on input
     handleSearch = (value, event) => {
         this.getQuestionList(true);
     }

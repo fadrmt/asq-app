@@ -14,12 +14,15 @@ class QuestionDetailPage extends Component {
         answers: null,
     }
 
+    // Load values on mount
     componentDidMount() {
         const { questionId } = this.props.match.params;
         this.getQuestion(questionId);
         this.getAnswers(questionId);
     }
 
+    // Retrieves a single question based on ID
+    // in the case of an error, logs it to console
     getQuestion = (questionId) => {
         axios.get('http://localhost:8000/api/questions/' + questionId)
           .then(res => {
@@ -32,6 +35,8 @@ class QuestionDetailPage extends Component {
         })
     }
 
+    // Retrieves all the answers linked to a question
+    // in the case of an error, logs it to console
     getAnswers = (questionId) => {
         axios.get('http://localhost:8000/api/answers/?question=' + questionId)
           .then(res => {
@@ -44,6 +49,7 @@ class QuestionDetailPage extends Component {
         })
     }
 
+    // handles refreshing of page upon posting of new answer
     handleNewAnswer = () => {
         const { questionId } = this.props.match.params;
         this.getAnswers(questionId);
@@ -66,10 +72,8 @@ class QuestionDetailPage extends Component {
                 </>
                 : null 
                 }
-
                 <Divider />
-                <PostAnswer questionId={questionId} handleNewAnswer={this.handleNewAnswer} />
-                
+                <PostAnswer questionId={questionId} handleNewAnswer={this.handleNewAnswer} />                
                 { this.state.answers ?
                     <>
                         <Divider />
@@ -81,7 +85,6 @@ class QuestionDetailPage extends Component {
                     </>
                 : null
                 }
-
             </>
         )
     }

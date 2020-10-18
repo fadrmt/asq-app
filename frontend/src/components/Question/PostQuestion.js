@@ -13,6 +13,7 @@ class PostQuestion extends Component {
         'body' : '',
     }
 
+    // For clearing / resetting the state
     clearState = () => {
         this.setState({
             'author_name': '',
@@ -21,12 +22,17 @@ class PostQuestion extends Component {
         })
     }
 
+    // Update the state with each input change
     handleChange = (e) => {
         this.setState({
           [e.target.name]: e.target.value
         })
     }
 
+    // creates a Question via POST request
+    // redirects back to home after creation
+    // in the case of an error, logs it to console
+    // clears the state
     postQuestion = () => {
         const data = {
             'author_name': this.state.author_name,
@@ -39,13 +45,14 @@ class PostQuestion extends Component {
             this.props.history.push('/')
         })
         .catch(error => {
-            alert(error.response.data.author_name)
+            console.log(error);
         })
         .finally(() => {
             this.clearState()
         })    
     }
 
+    // handles the click of the Submit button
     handleSubmit = (e) => {
         e.preventDefault();
         this.postQuestion();
