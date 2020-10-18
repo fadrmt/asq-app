@@ -10,15 +10,15 @@ const QuestionList = (props) => {
         questions.map(question => {
             const url = '/question/' + question.id
             return (
-                <Link to={url}>
-                    <Card hoverable key={question.id} className="question-card">
+                <Link to={url} key={question.id}>
+                    <Card hoverable className="question-card">
                         <QuestionListItem question={question}/>
                     </Card>
                 </Link>
             )
         })
   ) : (
-      <p>No questions posted.</p>
+      <div>No questions posted.</div>
   )
   return questionList;
   
