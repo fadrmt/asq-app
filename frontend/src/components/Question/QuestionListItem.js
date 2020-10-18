@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Divider, Row, Col } from 'antd';
 import moment from 'moment';
 import '../../css/Question/QuestionListItem.css';
+import Title from 'antd/lib/typography/Title';
 
 class QuestionListItem extends Component {
     render() {
@@ -13,8 +14,8 @@ class QuestionListItem extends Component {
                     <p className="question-title">{ title }</p>
                 </Col>
                 <Col span={4} align="center" className="answer-count-container">
-                    <h1 className="answer-count">{ answer_count }</h1>
-                    <span className="ant-card-meta ant-card-meta-description">
+                    <Title level={3} className="answer-count">{ answer_count }</Title>
+                    <span className="ant-card-meta ant-card-meta-description answer-count-label">
                         { (answer_count === 1)
                             ? <span> Answer </span>
                             : <span> Answers </span> 

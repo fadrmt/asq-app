@@ -9,8 +9,9 @@
 .question-author-name {
     font-weight: bold;
 }
-.answer-count {
-    margin: 0;
+h3.answer-count {
+    margin: 0 0 0 3px;
+    padding: 0;
 }
 .question-meta {
     padding-bottom: 0;
@@ -18,4 +19,7 @@
 .ant-card-body {
     padding-top: 5px;
     padding-bottom: 5px;
+}
+.answer-count-label {
+    font-size: 12px;
 }
