@@ -54,7 +54,7 @@ class QuestionDetailPage extends Component {
         return (
             <>
                 <Link to='/'>
-                    <Button shape="round" icon={<ArrowLeftOutlined />}>
+                    <Button shape="round" icon={<ArrowLeftOutlined  style={{color: "#FFF"}}/>}>
                         Back to Questions List
                     </Button>
                 </Link>
